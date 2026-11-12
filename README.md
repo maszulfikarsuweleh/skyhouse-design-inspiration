@@ -4,13 +4,15 @@ An interactive studio room study based on the supplied bedroom and kitchenette d
 
 ## Features
 
-- Estimated 3D room with bed, vanity, bronze mirrors, TV wall, and kitchenette.
+- Brochure-sized 3D studio with bed, vanity, bronze mirrors, TV wall, kitchenette, and an enterable bathroom opposite the kitchen.
 - Kitchen cabinets, recessed sink, arched faucet, two-burner hob, extractor, and refrigerator.
 - Forward/backward and sideways steps, height adjustment, and furniture boundaries.
 - Six cabinet color presets and a custom color picker. Warm ivory is the starting finish.
 - Mouse/touch drag, pinch/scroll zoom, fullscreen where supported, and reduced motion.
 - Opt-in phone orientation, compass heading when available, and subtle accelerometer response.
 - A separate fixed-position AI panorama mode.
+- An experimental Photo depth tour with linked Studio, Entry, and Bathroom panoramas, crossfades, and local projected parallax.
+- A top-down layout with component dimensions and a downloadable [1:50 floor plan](studio-floor-plan.svg).
 
 ## Open or deploy
 
@@ -25,6 +27,8 @@ For phone sensors, import this repository into Vercel as a static site: choose *
 | Look around | Drag/swipe or arrow keys |
 | Move | On-screen buttons or WASD |
 | Raise/lower viewpoint | Height buttons or E/Q |
+| Enter/leave bathroom | Walk through the doorway or use Enter bathroom / Back to studio |
+| View dimensions | Top plan; download its SVG for A4 landscape printing at 100% |
 | Zoom | Scroll, pinch, or +/− |
 | Change finish | Color presets or custom picker in 3D mode |
 | Use phone orientation | Phone look; Recenter aligns the view |
@@ -34,15 +38,27 @@ Sensor data stays in the page; it is not sent or saved. Sensors stop when the pa
 
 ## What the model represents
 
-This is an illustrative procedural reconstruction, not a measured room survey. The 3.8 × 5.4 × 2.9 m room shell, furniture dimensions, hidden surfaces, colors, and reflections are inferred. Use physical measurements and finish samples for purchasing or installation decisions.
+The supplied brochure prints a 3000 mm width and length segments of 4100 mm + 1800 mm. The viewer and plan use that 3.0 × 5.9 m envelope (17.7 m²; marketed as approximately 18 m²). The bathroom is opposite the kitchen near the entrance, following the brochure.
+
+The approximately 1100 mm bathroom width is scaled from the drawing; it is not a printed dimension. Furniture sizes, 2900 mm ceiling height, doorway, hidden surfaces, colors, and the proposed bathroom fixtures remain estimates. The plan labels the distinction and includes a component size schedule in millimeters. Print the SVG at 100% on A4 landscape for 1:50 scale. Use site measurements and physical finish samples for purchasing or installation decisions.
 
 The panorama is AI-generated from the supplied room image and stays at one viewpoint. Movement is available in the estimated 3D room; the panorama does not provide walking or cabinet recoloring.
 
 ## Validation
 
-Chrome checks cover rendering, movement, furniture/wall boundaries, height limits, color controls, zoom, panorama mode, keyboard/mouse controls, synthetic sensor permission and timeout handling, compass wraparound, bounded motion response, reduced motion, and six desktop/mobile viewport sizes.
+Chrome checks cover rendering, movement, furniture/wall boundaries, height limits, color controls, zoom, panorama mode, keyboard/mouse controls, synthetic sensor permission and timeout handling, compass wraparound, bounded motion response, reduced motion, and six desktop/mobile viewport sizes. Additional checks cover walking through the bathroom doorway, fixture and partition boundaries, entering/returning/resetting, panorama lockout, embedded plan rendering/download, and mobile/landscape layout.
 
 Real Android sensor accuracy, physical-device interaction feel, successful fullscreen, cross-browser behavior, and sustained mobile performance have not been verified.
+
+## Photo depth tour
+
+Open **Find your finish → Photo depth · experimental**, then select **Studio**, **Entry**, or **Bathroom**. These are three AI-generated design panoramas, not photographs captured at measured viewpoints. Longer travel changes viewpoints with a crossfade; small local steps project the image onto the estimated scene for parallax. Movement is bounded to ±350 mm at the studio/entry viewpoints and ±150 mm in the bathroom. Geometry boundaries can restrict it further.
+
+**Enter bathroom / Back to studio** also switches the linked photo viewpoints when Photo depth is active. Toggle Photo depth off for the full procedural 3D walk and cabinet color controls. Reset returns to the current photo viewpoint. Phone look, manual drag, zoom, and the scaled top plan remain available. Reduced motion skips crossfades.
+
+Projection cannot reveal real hidden surfaces. Expect stretching, seam artifacts, and detail differences between AI views; the proposed bathroom is not verified against interior photos. Its panorama is an appearance study rather than a scale-accurate survey. Full room navigation and component dimensions belong to the estimated 3D model and brochure-based plan.
+
+The three compressed panoramas are in [assets](assets), with [generation prompts and provenance](assets/panorama-assets-notes.txt). The HTML embeds all three for offline use. Browser checks cover image loading, node selection and image changes, enter/return navigation, parallax bounds, crossfades, reduced motion, reset, return to 3D, and responsive panel placement.
 
 ## Credits
 
