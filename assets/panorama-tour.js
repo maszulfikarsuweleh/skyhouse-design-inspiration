@@ -16,6 +16,32 @@ function direction(u, v) {
 let renderer, camera, world, sphere, frame = 0, lastFrame = 0, current = null;
 let yaw = 0, pitch = 0, automatic = false, request = 0, overlayAnimation, toastTimer, hotspots = [];
 const canvas = $('#view'), textureCache = new Map();
+let roomAnimations = [];
+function beginRoomLoad(id) {
+  roomAnimations.forEach(animation => animation.cancel()); roomAnimations = [];
+  $('#scan-reveal').hidden = true;
+  $('#loading').classList.toggle('is-travel', Boolean(current));
+  $('#loading').classList.remove('has-error');
+  $('#loading').hidden = false;
+  $('#load-title').textContent = scenes[id].name;
+  $('#load-message').textContent = 'Menyiapkan panorama ruang…';
+  $('#load-progress').hidden = false;
+  $('#retry').hidden = $('#load-fallback').hidden = true;
+}
+function revealRoom(selection) {
+  $('#load-message').textContent = 'Panorama siap';
+  $('#load-progress').hidden = true;
+  if (reduced.matches) {$('#loading').hidden = true; return;}
+  const loadingFade = $('#loading').animate([{opacity:1},{opacity:0}],{duration:260,easing:'ease-out'});
+  loadingFade.onfinish = () => {if (selection === request) $('#loading').hidden = true;};
+  $('#scan-room').textContent = scenes[current].name.toUpperCase();
+  $('#scan-reveal').hidden = false;
+  const scan = $('#scan-reveal').animate([{opacity:0},{opacity:1,offset:.15},{opacity:1,offset:.65},{opacity:0}],{duration:880,easing:'linear'});
+  scan.onfinish = () => {if (selection === request) $('#scan-reveal').hidden = true;};
+  roomAnimations = [loadingFade, scan,
+    $('#scan-line').animate([{transform:'translateY(-12vh)'},{transform:'translateY(100vh)'}],{duration:820,easing:'cubic-bezier(.25,.1,.25,1)'}),
+    canvas.animate([{opacity:.72,transform:'scale(1.025)'},{opacity:1,transform:'scale(1)'}],{duration:880,easing:'cubic-bezier(.22,1,.36,1)'})];
+}
 function message(text, persistent = false) {
   clearTimeout(toastTimer);
   $('#status').textContent = text;
@@ -88,6 +114,7 @@ async function selectScene(id) {
   setAutomatic(false);
   $('#tour').setAttribute('aria-busy','true');
   message(`Memuat ${scenes[id].name}…`,true);
+  beginRoomLoad(id);
   try {
     const texture = await textureFor(id);
     if (selection !== request) return;
@@ -105,9 +132,9 @@ async function selectScene(id) {
     $('#fov').textContent = '90°'; $('#scene-name').textContent = scenes[id].name;
     document.querySelectorAll('[data-scene]').forEach(button => button.setAttribute('aria-pressed',String(button.dataset.scene === id)));
     makeHotspots(id); renderer.render(world,camera); updateHotspots();
-    $('#loading').hidden = true;
+    revealRoom(selection);
     if (!$('#transition').hidden) {
-      overlayAnimation = $('#transition').animate([{opacity:1},{opacity:0}],{duration:450,easing:'ease-out'});
+      overlayAnimation = $('#transition').animate([{opacity:1},{opacity:0}],{duration:320,easing:'ease-out'});
       overlayAnimation.onfinish = () => $('#transition').hidden = true;
     }
     if (matchMedia('(max-width:600px)').matches) setMenu(false);
@@ -115,6 +142,9 @@ async function selectScene(id) {
   } catch (error) {
     if (selection !== request) return;
     message('Panorama gagal dimuat. Pilih titik lain atau coba lagi.',true);
+    $('#loading').classList.add('has-error');
+    $('#load-progress').hidden = true;
+    if (current) $('#loading').hidden = true;
     if (!current) {
       $('#load-message').textContent = 'Panorama belum dapat dibuka. Periksa koneksi lalu coba lagi.';
       $('#retry').hidden = false; $('#load-fallback').hidden = false;
@@ -229,7 +259,7 @@ canvas.addEventListener('keydown',event => {
 function pause() {setAutomatic(false); if (sensorActive || sensorPending) stopSensors('Phone look dijeda. Aktifkan kembali saat Anda siap.'); pointers.clear();}
 document.addEventListener('visibilitychange',() => {if (document.hidden) pause(); else schedule();});
 window.addEventListener('pagehide',pause);
-reduced.addEventListener('change',event => {if (event.matches) {setAutomatic(false); overlayAnimation?.cancel(); $('#transition').hidden = true; lean = 0;}});
+reduced.addEventListener('change',event => {if (event.matches) {setAutomatic(false); overlayAnimation?.cancel(); roomAnimations.forEach(animation => animation.cancel()); $('#scan-reveal').hidden = true; if (current && $('#tour').getAttribute('aria-busy') !== 'true') $('#loading').hidden = true; $('#transition').hidden = true; lean = 0;}});
 const compact = matchMedia('(max-width:600px)');
 function compactPanels() {if (compact.matches) {setMenu(false); setMap(false);}}
 compact.addEventListener('change',compactPanels); compactPanels();
@@ -242,8 +272,9 @@ try {
   sphere = new THREE.Mesh(geometry,new THREE.MeshBasicMaterial()); sphere.rotation.y = -Math.PI/2; world.add(sphere);
   function resize() {renderer.setSize(canvas.clientWidth,canvas.clientHeight,false); camera.aspect = canvas.clientWidth/canvas.clientHeight; camera.updateProjectionMatrix(); schedule();}
   new ResizeObserver(resize).observe(canvas); resize(); selectScene('studio');
-  canvas.addEventListener('webglcontextlost',event => {event.preventDefault(); pause(); $('#loading').hidden = false; $('#load-message').textContent = 'Tampilan grafis terputus. Muat ulang halaman untuk melanjutkan.'; $('#load-fallback').hidden = false;});
+  canvas.addEventListener('webglcontextlost',event => {event.preventDefault(); pause(); $('#loading').hidden = false; $('#loading').classList.add('has-error'); $('#load-progress').hidden = true; $('#load-message').textContent = 'Tampilan grafis terputus. Muat ulang halaman untuk melanjutkan.'; $('#load-fallback').hidden = false;});
 } catch (error) {
+  $('#loading').classList.add('has-error'); $('#load-progress').hidden = true;
   $('#load-message').textContent = 'Tur memerlukan browser dengan WebGL aktif. Anda masih dapat membuka halaman sewa.';
   $('#load-fallback').hidden = false; $('#load-fallback').href = 'index.html'; $('#load-fallback').textContent = 'Kembali ke halaman sewa'; console.error(error);
 }

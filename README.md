@@ -38,6 +38,8 @@ The source gives conflicting travel times for Kunciran toll access. The listing 
 
 The navigation pattern is inspired by the supplied SkyHouse/SPIndonesia tour reference. Its engine, branding, photos, and project content were not copied. The viewer uses the bundled Three.js r160 module (MIT; see `THREE-LICENSE.txt`) and the three existing AI-generated room panoramas. No new runtime dependency or external asset service is required.
 
+Room loading uses a brief futuristic scan reveal: an indeterminate loading indicator while the actual texture loads, then a single scan pass, subtle image scale/fade, and crossfade between viewpoints. No artificial percentage or minimum loading delay is added. Effects cancel safely on new requests and are skipped for reduced motion. Verified on desktop and 320px layouts, with self-checks for stale animation callbacks and reduced-motion fallback.
+
 Transitions connect fixed viewpoints; the panorama does not support free camera translation or headset VR. Generated views can differ in layout/details and contain distortion. Hotspots and the mini-map are illustrative; the bathroom schematic is opposite the kitchen near the entrance. The scaled brochure-based plan remains available separately. Cabinet colors, free movement and eye height remain in the estimated 3D tool.
 
 Phone look is opt-in, with permission/error handling and recentering. It pauses when the page is hidden. Orientation supports screen rotation, and available acceleration adds only a small capped roll; it does not estimate walking distance. Open the HTTPS tour directly on a supported phone. Physical Android/iOS sensor calibration and headset support are not verified.
