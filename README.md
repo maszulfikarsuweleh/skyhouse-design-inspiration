@@ -10,6 +10,14 @@ The repository homepage is now a private-unit rental landing page inspired by th
 
 Availability, actual furnishings, lease duration, deposit, and included/excluded charges have not been supplied. The page asks visitors to confirm these details directly. Uploaded and generated interior images are labeled as design references/AI visualizations, not verified photographs of the actual rental unit.
 
+## POI and facility thumbnails
+
+Nine POI rows now have small AI-generated category illustrations, clearly labeled as illustrations rather than photographs of the named venues. A single compressed 3×3 atlas is cached and cropped through CSS for all nine items. Generation prompt: `assets/thumbnails/poi-generation.txt`.
+
+Four locally bundled project promotional renderings illustrate the pool, playground, parking, and outdoor/sports area. They come from the user-specified Sky House source site, are labeled as promotional visuals rather than verified current-condition photographs, and can be opened at full size. Original URLs and asset types are recorded in `assets/thumbnails/sources.json`. All thumbnail images load lazily, have reserved dimensions, and require no third-party image host at runtime.
+
+Browser verification: all nine POI thumbnails and all four facility images loaded; desktop and 390/320px layouts had no horizontal overflow; source/contact/section checks passed. Current operational appearance of locations and amenities remains unverified.
+
 ## Neighborhood information
 
 The landing page now includes an address panel and Google Maps search link, nearby points of interest and quoted travel estimates, and grouped development amenities. Source: https://www.skyhousealamsutera.co/ (reviewed 13 November 2026). The page attributes this source and distinguishes development facilities from the actual rental unit's furnishings and rental inclusions.

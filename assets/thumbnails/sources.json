@@ -1,0 +1,39 @@
+{
+  "poi": {
+    "file": "poi-illustrations.jpg",
+    "type": "AI-generated category illustrations, not actual venue photographs",
+    "order": [
+      "home furnishing store",
+      "shopping mall",
+      "lifestyle mall",
+      "university campus",
+      "university campus",
+      "hospital",
+      "toll plaza",
+      "airport terminal",
+      "dining courtyard"
+    ]
+  },
+  "facilities": [
+    {
+      "file": "facility-pool.webp",
+      "type": "project promotional rendering, not verified operational photograph",
+      "source": "https://www.skyhousealamsutera.co/app/uploads/sites/332/2022/11/1620027500_facility_72463.webp"
+    },
+    {
+      "file": "facility-playground.webp",
+      "type": "project promotional rendering, not verified operational photograph",
+      "source": "https://www.skyhousealamsutera.co/app/uploads/sites/332/2022/11/1620027549_facility_62463.webp"
+    },
+    {
+      "file": "facility-parking.webp",
+      "type": "project promotional rendering, not verified operational photograph",
+      "source": "https://www.skyhousealamsutera.co/app/uploads/sites/332/2022/11/1665118995_facility_12463.webp"
+    },
+    {
+      "file": "facility-outdoor.webp",
+      "type": "project promotional rendering, not verified operational photograph",
+      "source": "https://www.skyhousealamsutera.co/app/uploads/sites/332/2022/11/1665744653_facility_152463.webp"
+    }
+  ]
+}
