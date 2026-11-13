@@ -10,6 +10,12 @@ The repository homepage is now a private-unit rental landing page inspired by th
 
 Availability, actual furnishings, lease duration, deposit, and included/excluded charges have not been supplied. The page asks visitors to confirm these details directly. Uploaded and generated interior images are labeled as design references/AI visualizations, not verified photographs of the actual rental unit.
 
+## Neighborhood information
+
+The landing page now includes an address panel and Google Maps search link, nearby points of interest and quoted travel estimates, and grouped development amenities. Source: https://www.skyhousealamsutera.co/ (reviewed 13 November 2026). The page attributes this source and distinguishes development facilities from the actual rental unit's furnishings and rental inclusions.
+
+The source gives conflicting travel times for Kunciran toll access. The listing uses its more specific FAQ entry: Kunciran 1 gate, 3.5 km / about 9 minutes. Travel times are source estimates, not live routing. The source lists different address details for the marketing gallery; the page uses the project's No.43 address and omits the inconsistent postal code. Facility operations, tenant access, fees, tower/floor/unit and actual furnishings still require confirmation.
+
 ## Deploy the landing page
 
 Import this repository into Vercel as a static project (**Other**, no build command, repository root). The root `index.html` is the landing page; keep `studio-walkthrough.html`, `assets/`, the floor plan, and the Three.js license alongside it. No installation, environment variables, or external image services are required. Open the HTTPS deployment for phone sensor support.
