@@ -1,3 +1,23 @@
+# Studio Lyli Salwa — Rental Landing Page
+
+The repository homepage is now a private-unit rental landing page inspired by the layout of the supplied SkyHouse Alam Sutera project page. It uses the supplied interior reference and the project's generated assets; it does not reuse the developer's sales price, contact number, logo, or company claims.
+
+- Owner: **Lyli Salwa**.
+- Monthly rent: **Rp2,500,000**, interpreting the user's “2.5 a month”.
+- Rental contact: **087875358336** (`+6287875358336`). WhatsApp links open a prefilled inquiry; they do not send it automatically.
+- Gallery, mobile menu, specifications, rental FAQs, and 1:50 plan download.
+- Existing interactive project preserved at [studio-walkthrough.html](studio-walkthrough.html), with an optional lazy-loaded embedded tour and a return link to this listing.
+
+Availability, actual furnishings, lease duration, deposit, and included/excluded charges have not been supplied. The page asks visitors to confirm these details directly. Uploaded and generated interior images are labeled as design references/AI visualizations, not verified photographs of the actual rental unit.
+
+## Deploy the landing page
+
+Import this repository into Vercel as a static project (**Other**, no build command, repository root). The root `index.html` is the landing page; keep `studio-walkthrough.html`, `assets/`, the floor plan, and the Three.js license alongside it. No installation, environment variables, or external image services are required. Open the HTTPS deployment for phone sensor support.
+
+Validation for the landing page: local assets and section links, all phone/WhatsApp targets, owner and monthly rent replacement, JavaScript syntax, desktop and 390/320px layouts, gallery next/close behavior, mobile menu open/navigation/close, embedded tour load/close, and tour return-to-listing targeting. No WhatsApp message or call was initiated. Live deployment, actual availability and real phone sensor hardware are not verified.
+
+---
+
 # Skyhouse Design Inspiration
 
 An interactive studio room study based on the supplied bedroom and kitchenette design. The self-contained `index.html` embeds its 3D renderer and panorama, so it can open directly in a browser without installing dependencies.
