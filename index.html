@@ -29,10 +29,39 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline-color:#996408
 
 
 .tariffs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;flex:1}.tariff .price{font-size:clamp(19px,1.9vw,25px);white-space:nowrap}.tariff .price span{font-size:12px}.tariff .price-label{margin-bottom:4px}.summary-facts{flex:none}@media(max-width:1100px){.summary{flex-direction:column;align-items:stretch;gap:19px}.summary-facts{border-top:1px solid var(--line);padding-top:16px;justify-content:space-between}.tariff .price{font-size:24px}}@media(max-width:760px){.tariffs{grid-template-columns:1fr;gap:14px}.tariff{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:12px;border-bottom:1px solid var(--line)}.tariff:last-child{padding-bottom:0;border-bottom:0}.tariff .price-label{margin-bottom:0}.tariff .price{font-size:22px}.summary-facts{padding-top:18px}.hero .tag{font-size:8px;letter-spacing:.07em}}@media(max-width:360px){.tariff .price{font-size:20px}.hero .tag{font-size:7px}}
+
+/* Motion follows the room reveal; content stays visible without JavaScript. */
+:root{--font-display:'Baskerville','Palatino Linotype',serif;--font-body:'Avenir Next','Trebuchet MS',sans-serif;--motion-reveal:760ms;--motion-fast:240ms}
+body{font-family:var(--font-body)}
+.hero h1,.section h2,.contact h2,.address-panel h3,.tour-copy h2,.owner-mark{font-family:var(--font-display)}
+@keyframes room-settle{from{transform:scale(1.035)}to{transform:scale(1)}}
+@keyframes soft-arrival{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes glass-open{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes backdrop-open{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:no-preference){
+  .hero>img{animation:room-settle 1800ms var(--ease) both}
+  .hero-content .wrap>*{animation:soft-arrival var(--motion-reveal) var(--ease) both}
+  .hero-content .tag{animation-delay:100ms}
+  .hero-content h1{animation-delay:180ms}
+  .hero-content p{animation-delay:260ms}
+  .hero-buttons{animation-delay:340ms!important}
+  .summary{animation:soft-arrival var(--motion-reveal) 420ms var(--ease) both}
+  .motion-enter{animation:soft-arrival var(--motion-reveal) var(--motion-delay,0ms) var(--ease) both}
+  .motion-enter:focus-within{animation:none}
+  dialog[open]{animation:glass-open 360ms var(--ease) both}
+  dialog[open]::backdrop{animation:backdrop-open 300ms ease both}
+  .navlinks.open{animation:soft-arrival 300ms var(--ease) both}
+}
+@media(hover:hover) and (pointer:fine){
+  .button span,.gallery-caption .expand,.play-circle{transition:transform var(--motion-fast) var(--ease)}
+  .button:hover span,.gallery-item:hover .expand{transform:translate(2px,-2px)}
+  .tour-play:hover .play-circle{transform:scale(1.06)}
+}
+@media print{.motion-enter,.hero-content .wrap>*,.summary{animation:none!important}}
 </style></head><body>
 <a class="skip" href="#tentang">Langsung ke informasi unit</a>
 <header class="topbar"><a class="brand" href="#" aria-label="Studio Lyli Salwa, beranda"><svg viewBox="0 0 40 45" fill="none" aria-hidden="true"><path d="M4 18L20 4l16 14M9 16v24h22V16M16 40V24h8v16" stroke="currentColor" stroke-width="2"/><path d="M16 15h8" stroke="currentColor" stroke-width="2"/></svg><span><strong>SKYHOUSE</strong><small>ALAM SUTERA · UNIT LYLI SALWA</small></span></a><nav class="navlinks" id="navlinks" aria-label="Navigasi utama"><a href="#tentang">Tentang unit</a><a href="#lokasi">Lokasi</a><a href="#galeri">Galeri</a><a href="#tur">Tur 360°</a><a href="#denah">Denah</a><a class="navcontact" href="#kontak">Hubungi kontak sewa ↗</a></nav><button class="menu" aria-expanded="false" aria-controls="navlinks" aria-label="Buka menu"><span></span><span></span><span></span></button></header>
-<section class="hero" aria-label="Studio SkyHouse Alam Sutera"><img src="assets/interior-reference.jpg" alt="Referensi interior studio dengan tempat tidur, meja rias, dapur compact, dan aksen bronze" width="1536" height="1024" fetchpriority="high"><div class="hero-content"><div class="wrap reveal"><span class="tag">Studio · harian, bulanan & tahunan</span><h1>Studio hangat.<br>Ruang untuk hidup Anda.</h1><p>SkyHouse Alam Sutera<br>Unit pribadi milik Lyli Salwa.</p><div class="hero-buttons"><a class="button white" href="#tur">Jelajahi unit <span aria-hidden="true">↗</span></a><a class="button outline wa-link" href="https://wa.me/6287875358336" target="_blank" rel="noopener">Tanya ketersediaan</a></div></div></div><span class="visual-label">Referensi desain interior · kondisi unit dikonfirmasi saat kunjungan</span></section>
+<section class="hero" aria-label="Studio SkyHouse Alam Sutera"><img src="assets/interior-reference.jpg" alt="Referensi interior studio dengan tempat tidur, meja rias, dapur compact, dan aksen bronze" width="1536" height="1024" fetchpriority="high"><div class="hero-content"><div class="wrap"><span class="tag">Studio · harian, bulanan & tahunan</span><h1>Studio hangat.<br>Ruang untuk hidup Anda.</h1><p>SkyHouse Alam Sutera<br>Unit pribadi milik Lyli Salwa.</p><div class="hero-buttons"><a class="button white" href="#tur">Jelajahi unit <span aria-hidden="true">↗</span></a><a class="button outline wa-link" href="https://wa.me/6287875358336" target="_blank" rel="noopener">Tanya ketersediaan</a></div></div></div><span class="visual-label">Referensi desain interior · kondisi unit dikonfirmasi saat kunjungan</span></section>
 <main><div class="wrap"><section class="summary" aria-label="Ringkasan penawaran"><div class="tariffs" aria-label="Pilihan tarif sewa"><div class="tariff"><span class="price-label">HARIAN</span><div class="price">Rp400.000 <span>/ hari</span></div></div><div class="tariff"><span class="price-label">BULANAN</span><div class="price">Rp4.000.000 <span>/ bulan</span></div></div><div class="tariff"><span class="price-label">TAHUNAN</span><div class="price">Rp40.000.000 <span>/ tahun</span></div></div></div><div class="summary-facts"><div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5M4 4l6 6M20 20l-6-6"/></svg><span>±18 m²</span></div><div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18V7m0 6h18v5M3 17h18M6 13V8h5v5M3 20v-3m18 3V9"/></svg><span>Area tidur studio</span></div><div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16v4a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-4ZM6 12V5a2 2 0 0 1 4 0M7 21v-2m10 2v-2"/></svg><span>1 kamar mandi</span></div></div></section>
 <section class="section about" id="tentang"><div><span class="section-label">Tentang unit ini</span><h2>Compact, nyaman,<br>dan terasa personal.</h2><p>Studio di SkyHouse Alam Sutera ini ditawarkan untuk sewa harian, bulanan, atau tahunan oleh pemilik unit, <strong>Lyli Salwa</strong>, dengan harga <strong>Rp400.000 per hari, Rp4.000.000 per bulan, atau Rp40.000.000 per tahun</strong>.</p><p>Luas ±18 m² memadukan area tidur dan ruang aktivitas, kitchenette, serta satu kamar mandi. Jelajahi konsep interior bernuansa ivory, marble, dan bronze melalui galeri serta tur interaktif di halaman ini.</p><div class="owner"><div class="owner-mark" aria-hidden="true">LS</div><div><small>PEMILIK UNIT</small><strong>Lyli Salwa</strong></div></div></div><div><dl class="specs"><div><dt>Lokasi</dt><dd>SkyHouse Alam Sutera</dd></div><div><dt>Tipe</dt><dd>Studio</dd></div><div><dt>Luas menurut brosur</dt><dd>±18 m²</dd></div><div><dt>Kamar mandi</dt><dd>1</dd></div><div><dt>Area dapur</dt><dd>Kitchenette</dd></div><div><dt>Sewa harian</dt><dd>Rp400.000 / hari</dd></div><div><dt>Sewa bulanan</dt><dd>Rp4.000.000 / bulan</dd></div><div><dt>Sewa tahunan</dt><dd>Rp40.000.000 / tahun</dd></div></dl><p class="note">Ketersediaan, kelengkapan unit, minimal masa sewa, deposit, dan biaya tambahan dikonfirmasi melalui kontak sewa. Gambar pada halaman ini merupakan referensi desain dan visualisasi, bukan dokumentasi kondisi aktual yang telah diverifikasi.</p></div></section>
 
@@ -53,4 +82,25 @@ const waText='Halo, saya tertarik menyewa studio milik Lyli Salwa di SkyHouse Al
 const menu=document.querySelector('.menu'),nav=document.querySelector('#navlinks');function closeMenu(){nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Buka menu');}menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Tutup menu':'Buka menu');});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));document.addEventListener('keydown',e=>{if(e.key==='Escape'&&nav.classList.contains('open')){closeMenu();menu.focus();}});
 const images=[{src:'assets/interior-reference.jpg',title:'Studio & kitchen set',type:'Referensi desain interior'},{src:'assets/studio-panorama.jpg',title:'Area studio',type:'Visualisasi AI'},{src:'assets/studio-entry-panorama.jpg',title:'Dari pintu masuk',type:'Visualisasi AI'},{src:'assets/bathroom-panorama.jpg',title:'Kamar mandi',type:'Usulan desain · visualisasi AI'}];let current=0;const dialog=document.querySelector('#gallery-dialog');function showImage(i){current=(i+images.length)%images.length;const item=images[current];document.querySelector('#gallery-title').textContent=item.title;document.querySelector('#gallery-type').textContent=item.type;document.querySelector('#gallery-large').src=item.src;document.querySelector('#gallery-large').alt=item.title+' — '+item.type;document.querySelector('#gallery-count').textContent=(current+1)+' / '+images.length;}document.querySelectorAll('[data-image]').forEach(b=>b.addEventListener('click',()=>{showImage(Number(b.dataset.image));dialog.showModal();}));document.querySelector('#gallery-close').onclick=()=>dialog.close();document.querySelector('#gallery-prev').onclick=()=>showImage(current-1);document.querySelector('#gallery-next').onclick=()=>showImage(current+1);dialog.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();showImage(current+1);}if(e.key==='ArrowLeft'){e.preventDefault();showImage(current-1);}});dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}});
 const shell=document.querySelector('#viewer-shell'),viewer=document.querySelector('#room-viewer'),start=document.querySelector('#start-tour');start.onclick=()=>{viewer.src='studio-walkthrough.html';shell.hidden=false;start.setAttribute('aria-expanded','true');shell.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth',block:'start'});};document.querySelector('#close-tour').onclick=()=>{shell.hidden=true;viewer.removeAttribute('src');start.setAttribute('aria-expanded','false');start.focus();};
+
+const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+if (!reducedMotion.matches && 'IntersectionObserver' in window) {
+  const reveal = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('motion-enter');
+      reveal.unobserve(entry.target);
+    });
+  }, {threshold: 0.08});
+  document.querySelectorAll('.about, .section-top, .address-panel, .poi-panel, .tour-copy, .tour-poster, .plan-picture, .plan-copy, .faq-section, .contact').forEach(el => reveal.observe(el));
+  document.querySelectorAll('.facility-thumbnails, .gallery-grid').forEach(group => {
+    [...group.children].forEach((el, index) => {
+      el.style.setProperty('--motion-delay', `${index * 65}ms`);
+      reveal.observe(el);
+    });
+  });
+  reducedMotion.addEventListener('change', event => {
+    if (event.matches) reveal.disconnect();
+  });
+}
 </script></body></html>

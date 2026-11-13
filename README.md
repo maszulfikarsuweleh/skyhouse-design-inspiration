@@ -6,6 +6,7 @@ The repository homepage is now a private-unit rental landing page inspired by th
 - Rent: **Rp400,000/day**, **Rp4,000,000/month**, or **Rp40,000,000/year**, supplied by the user.
 - Rental contact: **087875358336** (`+6287875358336`). WhatsApp links open a prefilled inquiry; they do not send it automatically.
 - Gallery, mobile menu, specifications, rental FAQs, and 1:50 plan download.
+- Refined glass motion: staggered hero entrance, one-shot section reveals, gallery dialog and mobile-menu transitions. CSS-first, no added libraries; respects reduced motion and keeps content visible without JavaScript. Display/body typography uses Baskerville and Avenir Next with local fallbacks.
 - Existing interactive project preserved at [studio-walkthrough.html](studio-walkthrough.html), with an optional lazy-loaded embedded tour and a return link to this listing.
 
 Availability, actual furnishings, lease duration, deposit, and included/excluded charges have not been supplied. The page asks visitors to confirm these details directly. Uploaded and generated interior images are labeled as design references/AI visualizations, not verified photographs of the actual rental unit.
