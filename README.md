@@ -7,7 +7,8 @@ The repository homepage is now a private-unit rental landing page inspired by th
 - Rental contact: **087875358336** (`+6287875358336`). WhatsApp links open a prefilled inquiry; they do not send it automatically.
 - Gallery, mobile menu, specifications, rental FAQs, and 1:50 plan download.
 - Refined glass motion: staggered hero entrance, one-shot section reveals, gallery dialog and mobile-menu transitions. CSS-first, no added libraries; respects reduced motion and keeps content visible without JavaScript. Display/body typography uses Baskerville and Avenir Next with local fallbacks.
-- Existing interactive project preserved at [studio-walkthrough.html](studio-walkthrough.html), with an optional lazy-loaded embedded tour and a return link to this listing.
+- Panorama-first tour at [studio-walkthrough.html](studio-walkthrough.html): three linked AI viewpoints, projected arrow hotspots, thumbnail navigation, interactive schematic map, zoom, optional autorotation, fullscreen, and opt-in phone orientation. Also available as a lazy-loaded embed on the landing page.
+- Existing estimated 3D/color design tool preserved at [studio-design.html](studio-design.html). The panorama viewer and 3D tool link to each other and back to the listing.
 
 Availability, actual furnishings, lease duration, deposit, and included/excluded charges have not been supplied. The page asks visitors to confirm these details directly. Uploaded and generated interior images are labeled as design references/AI visualizations, not verified photographs of the actual rental unit.
 
@@ -33,11 +34,21 @@ The landing page now includes an address panel and Google Maps search link, near
 
 The source gives conflicting travel times for Kunciran toll access. The listing uses its more specific FAQ entry: Kunciran 1 gate, 3.5 km / about 9 minutes. Travel times are source estimates, not live routing. The source lists different address details for the marketing gallery; the page uses the project's No.43 address and omits the inconsistent postal code. Facility operations, tenant access, fees, tower/floor/unit and actual furnishings still require confirmation.
 
+## Panorama tour
+
+The navigation pattern is inspired by the supplied SkyHouse/SPIndonesia tour reference. Its engine, branding, photos, and project content were not copied. The viewer uses the bundled Three.js r160 module (MIT; see `THREE-LICENSE.txt`) and the three existing AI-generated room panoramas. No new runtime dependency or external asset service is required.
+
+Transitions connect fixed viewpoints; the panorama does not support free camera translation or headset VR. Generated views can differ in layout/details and contain distortion. Hotspots and the mini-map are illustrative; the bathroom schematic is opposite the kitchen near the entrance. The scaled brochure-based plan remains available separately. Cabinet colors, free movement and eye height remain in the estimated 3D tool.
+
+Phone look is opt-in, with permission/error handling and recentering. It pauses when the page is hidden. Orientation supports screen rotation, and available acceleration adds only a small capped roll; it does not estimate walking distance. Open the HTTPS tour directly on a supported phone. Physical Android/iOS sensor calibration and headset support are not verified.
+
+Checked: studio → entry → bathroom hotspot route, map and thumbnail state, cyclic previous/next, zoom, keyboard rotation, autorotation controls, guide dialog, desktop and 320px layouts, touch target sizes, 3D fallback and landing embed. Geometry/asset/control self-checks pass. Physical touch/pinch, device sensors, reduced-motion OS settings, browser fullscreen behavior outside the preview, and the live Vercel deployment have not been verified.
+
 ## Deploy the landing page
 
-Import this repository into Vercel as a static project (**Other**, no build command, repository root). The root `index.html` is the landing page; keep `studio-walkthrough.html`, `assets/`, the floor plan, and the Three.js license alongside it. No installation, environment variables, or external image services are required. Open the HTTPS deployment for phone sensor support.
+Import this repository into Vercel as a static project (**Other**, no build command, repository root). The root `index.html` is the landing page; keep `studio-walkthrough.html`, `studio-design.html`, `assets/`, the floor plan, and the Three.js license alongside it. No installation, environment variables, or external image services are required. Open the HTTPS deployment for phone sensor support.
 
-Validation for the landing page: local assets and section links, all phone/WhatsApp targets, owner and monthly rent replacement, JavaScript syntax, desktop and 390/320px layouts, gallery next/close behavior, mobile menu open/navigation/close, embedded tour load/close, and tour return-to-listing targeting. No WhatsApp message or call was initiated. Live deployment, actual availability and real phone sensor hardware are not verified.
+Validation for the landing page: local assets and section links, all phone/WhatsApp targets, owner and daily/monthly/annual rental rates, JavaScript syntax, desktop and 390/320px layouts, gallery next/close behavior, mobile menu open/navigation/close, embedded tour load/close, and tour return-to-listing targeting. No WhatsApp message or call was initiated. Live deployment, actual availability and real phone sensor hardware are not verified.
 
 ---
 
