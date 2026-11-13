@@ -3,7 +3,7 @@
 The repository homepage is now a private-unit rental landing page inspired by the layout of the supplied SkyHouse Alam Sutera project page. It uses the supplied interior reference and the project's generated assets; it does not reuse the developer's sales price, contact number, logo, or company claims.
 
 - Owner: **Lyli Salwa**.
-- Monthly rent: **Rp2,500,000**, interpreting the user's “2.5 a month”.
+- Rent: **Rp400,000/day**, **Rp4,000,000/month**, or **Rp40,000,000/year**, supplied by the user.
 - Rental contact: **087875358336** (`+6287875358336`). WhatsApp links open a prefilled inquiry; they do not send it automatically.
 - Gallery, mobile menu, specifications, rental FAQs, and 1:50 plan download.
 - Existing interactive project preserved at [studio-walkthrough.html](studio-walkthrough.html), with an optional lazy-loaded embedded tour and a return link to this listing.
