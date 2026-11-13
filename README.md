@@ -10,6 +10,14 @@ The repository homepage is now a private-unit rental landing page inspired by th
 
 Availability, actual furnishings, lease duration, deposit, and included/excluded charges have not been supplied. The page asks visitors to confirm these details directly. Uploaded and generated interior images are labeled as design references/AI visualizations, not verified photographs of the actual rental unit.
 
+## Glassmorphism design
+
+The rental page and standalone tour controls now use a shared blue/ivory/champagne glass theme: translucent fills, static backdrop blur, white edges, soft shadows, serif display typography, and restrained transform/opacity interaction. The layout follows the user-supplied [Awwwards skill](https://github.com/SandroHub013/awwwards-skill/blob/main/SKILL.md) as design guidance, without claiming an award or an unmeasured score.
+
+The existing listing information, contact targets, captions, source links, gallery, tour, floor plan, and thumbnails are retained. Reduced-motion rules remain in effect; unsupported blur and reduced-transparency preferences use more opaque surfaces. No extra runtime dependency was added.
+
+Verification: browser previews at 1280px, 390px, and 320px with no horizontal overflow; menu open and section navigation; gallery next/escape; embedded tour load/close; phone links; local asset/anchor checks. Computed text contrast against worst-case white behind the dark glass was 4.83:1 for hero copy and 5.92:1 for navigation; body copy against its light surface was 5.41:1. These are color calculations, not a full accessibility certification. Physical mobile GPU performance, OS preference emulation, cross-browser behavior and live deployment have not been measured.
+
 ## POI and facility thumbnails
 
 Nine POI rows now have small AI-generated category illustrations, clearly labeled as illustrations rather than photographs of the named venues. A single compressed 3×3 atlas is cached and cropped through CSS for all nine items. Generation prompt: `assets/thumbnails/poi-generation.txt`.
